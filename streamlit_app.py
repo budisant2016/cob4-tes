@@ -1,6 +1,23 @@
 import streamlit as st
+import pandas as pd
 
-st.title("🎈 APLIKASI PYTHONKU")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
+# Judul aplikasi
+st.title("Dashboard Analisis Data")
+
+# Mengunggah file
+uploaded_file = st.file_uploader("Unggah file CSV", type="csv")
+
+if uploaded_file:
+    # Membaca file CSV
+    data = pd.read_csv(uploaded_file)
+    st.write("Data yang diunggah:")
+    st.write(data)
+
+    # Statistik deskriptif
+    st.write("Statistik Deskriptif:")
+    st.write(data.describe())
+
+    # Visualisasi
+    if st.checkbox("Tampilkan histogram"):
+        column = st.selectbox("Pilih kolom untuk histogram:", data.columns)
+        st.bar_chart(data[column].value_counts())
