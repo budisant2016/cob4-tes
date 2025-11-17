@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # Judul aplikasi
-st.title("Dashboard Analisis Data")
+st.title("Dashboard Analisis Data Baru")
 
 # Mengunggah file
 uploaded_file = st.file_uploader("Unggah file CSV", type="csv")
